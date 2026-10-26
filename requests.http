@@ -1,0 +1,58 @@
+### 1. Gültige Bestellung senden
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "orderId": "ORD-1001",
+  "customer": "Max Muster",
+  "amount": 125.50
+}
+
+
+### 2. Zweite gültige Bestellung
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "orderId": "ORD-1002",
+  "customer": "Anna Beispiel",
+  "amount": 89.90
+}
+
+
+### 3. Gespeicherte Bestellungen anzeigen
+GET http://localhost:8081/confirmations
+Accept: application/json
+
+
+### 4. Fehler testen: leere Order-ID
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "orderId": "",
+  "customer": "Max Muster",
+  "amount": 125.50
+}
+
+
+### 5. Fehler testen: leerer Kunde
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "orderId": "ORD-1003",
+  "customer": "",
+  "amount": 125.50
+}
+
+
+### 6. Fehler testen: negativer Betrag
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+  "orderId": "ORD-1004",
+  "customer": "Max Muster",
+  "amount": -20
+}
